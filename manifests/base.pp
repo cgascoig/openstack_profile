@@ -14,6 +14,7 @@ class profile::base {
     shell    => '/bin/bash',
     groups   => 'sudo',
     gid      => 'cgascoig',
+    password => '***REMOVED***'
   }
   
   file {'/home/cgascoig':
@@ -22,6 +23,12 @@ class profile::base {
     group     => "cgascoig",
     mode      => '0750',
     require   => [ User['cgascoig'], Group['cgascoig'] ]
+  }
+  
+  ssh_authorized_key { 'cgascoig':
+    user   => 'cgascoig',
+    key    => '***REMOVED***',
+    type   => 'ssh-rsa'
   }
   
 }
