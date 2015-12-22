@@ -2,7 +2,7 @@ class profile::rabbitmq (
   String $username = 'openstack',
   String $password = 'C1sco123',
 ) {
-  class { '::rabbitmq' : }
+  include '::rabbitmq'
   
   rabbitmq_user { $username:
     admin    => false,
