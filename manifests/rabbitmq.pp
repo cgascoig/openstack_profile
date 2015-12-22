@@ -1,6 +1,6 @@
 class profile::rabbitmq (
-  String username = 'openstack',
-  String password = 'C1sco123',
+  String $username = 'openstack',
+  String $password = 'C1sco123',
 ) {
   class { '::rabbitmq' : }
   
