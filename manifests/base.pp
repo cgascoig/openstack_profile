@@ -4,7 +4,7 @@ class profile::base {
   }
   
   class { 'apt':
-    apt_update_frequency   => "daily",
+    # apt_update_frequency   => "daily",
     ppas                   => ["cloud-archive:liberty"],
   }
   
