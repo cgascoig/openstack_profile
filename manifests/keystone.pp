@@ -28,6 +28,7 @@ class profile::keystone (
     rabbit_host         => $rabbit_host,
     rabbit_userid       => $rabbit_username,
     rabbit_password     => $rabbit_password,
+    token_driver        => 'sql',
   }
   
   class { 'keystone::endpoint':
