@@ -23,7 +23,7 @@ class profile::keystone (
   class { 'keystone':
     verbose             => true,
     debug               => true,
-    admin_token         => 'jdasnf90u2309rjwpidshuiwe',
+    admin_token         => $admin_token,
     database_connection => "mysql://$db_username:$db_password@$db_host/$db_name",
     rabbit_host         => $rabbit_host,
     rabbit_userid       => $rabbit_username,
