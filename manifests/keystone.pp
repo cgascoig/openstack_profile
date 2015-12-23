@@ -32,9 +32,9 @@ class profile::keystone (
   }
   
   class { 'keystone::endpoint':
-    public_url      => "http://10.67.28.164:5000",
-    admin_url       => "http://10.67.28.164:35357",
-    internal_url    => "http://10.67.28.164:5000",
+    public_url      => "http://${::ipaddress}:5000",
+    admin_url       => "http://${::ipaddress}:35357",
+    internal_url    => "http://${::ipaddress}:5000",
     region          => "regionOne",
   }
   
