@@ -40,7 +40,7 @@ class profile::nova_controller (
     
     ec2_public_url      => "http://${::ipaddress}:8773/services/Cloud",
     ec2_internal_url    => "http://${::ipaddress}:8773/services/Cloud",
-    ec2_admin_url_url   => "http://${::ipaddress}:8773/services/Admin",
+    ec2_admin_url   => "http://${::ipaddress}:8773/services/Admin",
   }
   
   class { 'nova':
