@@ -70,7 +70,7 @@ class profile::neutron_controller (
   
   class { 'neutron::agents::metadata': 
     shared_secret     => $neutron_metadata_proxy_shared_secret,
-    auth_username     => $keystone_user,
+    auth_user     => $keystone_user,
     auth_password     => $keystone_password,
     auth_tenant       => $keystone_tenant,
     auth_url          => "http://${::ipaddress}:35357/v2.0",
