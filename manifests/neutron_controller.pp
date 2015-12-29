@@ -38,7 +38,7 @@ class profile::neutron_controller (
   class { 'neutron':
     verbose                 => true,
     debug                   => true,
-    rabbit_userid           => $rabbit_username,
+    rabbit_user           => $rabbit_username,
     rabbit_password         => $rabbit_password,
     rabbit_host             => $rabbit_host,
     database_connection     => "mysql://$db_username:$db_password@$db_host/$db_name",
