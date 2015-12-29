@@ -48,13 +48,14 @@ class profile::neutron_controller (
   }
   
   class { 'neutron::server':
-    auth_uri          => "http://${::ipaddress}:5000/v2.0",
-    identity_uri      => "http://${::ipaddress}:35357",
-    auth_user         => $keystone_user,
-    auth_password     => $keystone_password,
-    auth_tenant       => $keystone_tenant,
+    auth_uri              => "http://${::ipaddress}:5000/v2.0",
+    identity_uri          => "http://${::ipaddress}:35357",
+    auth_user             => $keystone_user,
+    auth_password         => $keystone_password,
+    auth_tenant           => $keystone_tenant,
     
-    database_connection     => "mysql://$db_username:$db_password@$db_host/$db_name",
+    database_connection   => "mysql://$db_username:$db_password@$db_host/$db_name",
+    sync_db               => true,
   }
   
   class { 'neutron::server::notifications':
