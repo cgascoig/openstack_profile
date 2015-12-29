@@ -41,7 +41,6 @@ class profile::neutron_controller (
     rabbit_user           => $rabbit_username,
     rabbit_password         => $rabbit_password,
     rabbit_host             => $rabbit_host,
-    database_connection     => "mysql://$db_username:$db_password@$db_host/$db_name",
     
     allow_overlapping_ips   => true,
     service_plugins         => [ 'router' ],
@@ -54,6 +53,8 @@ class profile::neutron_controller (
     auth_user         => $keystone_user,
     auth_password     => $keystone_password,
     auth_tenant       => $keystone_tenant,
+    
+    database_connection     => "mysql://$db_username:$db_password@$db_host/$db_name",
   }
   
   class { 'neutron::server::notifications':
