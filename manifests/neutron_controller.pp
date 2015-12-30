@@ -30,9 +30,9 @@ class profile::neutron_controller (
     password            => $keystone_password,
     tenant              => $keystone_tenant,
     
-    public_url          => "http://${::ipaddress}:8774/v2/%(tenant_id)s",
-    admin_url           => "http://${::ipaddress}:8774/v2/%(tenant_id)s",
-    internal_url        => "http://${::ipaddress}:8774/v2/%(tenant_id)s",
+    public_url          => "http://${::ipaddress}:9696",
+    admin_url           => "http://${::ipaddress}:9696",
+    internal_url        => "http://${::ipaddress}:9696",
   }
   
   class { 'neutron':
