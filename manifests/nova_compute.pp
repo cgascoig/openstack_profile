@@ -11,11 +11,6 @@ class profile::nova_compute (
   String $keystone_host,
   String $vncproxy_host,
   
-  # String $keystone_tenant = 'services',
-  # String $keystone_user = 'nova',
-  # String $keystone_password,
-  #
-  # String $neutron_metadata_proxy_shared_secret,
   String $neutron_keystone_tenant = 'services',
   String $neutron_keystone_user = 'neutron',
   String $neutron_keystone_password,
