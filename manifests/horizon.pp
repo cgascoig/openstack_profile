@@ -13,5 +13,6 @@ class profile::horizon (
   class { 'horizon':
     secret_key      => '12345',
     cache_server_ip => '127.0.0.1',
+    allowed_hosts   => '*',
   }
 }
