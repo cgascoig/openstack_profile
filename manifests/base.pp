@@ -31,4 +31,8 @@ class profile::base {
     type   => 'ssh-rsa'
   }
   
+  package { 'lldpd': 
+    ensure    => present,
+  }
+  
 }
