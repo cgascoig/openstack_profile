@@ -2,6 +2,13 @@ class profile::rabbitmq (
   String $username = 'openstack',
   String $password = 'C1sco123',
 ) {
+  case ::$osfamily {
+    'RedHat': {
+      include 'erlang'
+      class { 'erlang': epel_enable => true}
+    }
+  }
+  
   include '::rabbitmq'
   
   rabbitmq_user { $username:
