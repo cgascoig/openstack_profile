@@ -1,4 +1,8 @@
-class profile::base {
+class profile::base (
+  String $os_username,
+  String $os_password, #Not plain text!
+  String $ssh_key, #RSA public key
+) {
   class { 'ntp':
     servers    => ["ntp.esl.cisco.com"],
   }
@@ -24,29 +28,29 @@ class profile::base {
   }
   
   
-  group {'cgascoig':
+  group {$os_username :
     ensure  => present,
   }
   
-  user {'cgascoig':
+  user {$os_username :
     ensure   => present,
     shell    => '/bin/bash',
     groups   => $groups,
-    gid      => 'cgascoig',
-    password => '***REMOVED***'
+    gid      => $os_username,
+    password => $os_password,
   }
   
-  file {'/home/cgascoig':
+  file {"/home/$os_username" :
     ensure    => directory,
-    owner     => "cgascoig",
-    group     => "cgascoig",
+    owner     => $os_username,
+    group     => $os_username,
     mode      => '0750',
-    require   => [ User['cgascoig'], Group['cgascoig'] ]
+    require   => [ User[$os_username], Group[$os_username] ]
   }
   
-  ssh_authorized_key { 'cgascoig':
-    user   => 'cgascoig',
-    key    => '***REMOVED***',
+  ssh_authorized_key { $os_username :
+    user   => $os_username,
+    key    => $ssh_key,
     type   => 'ssh-rsa'
   }
   
