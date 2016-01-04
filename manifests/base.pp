@@ -7,11 +7,15 @@ class profile::base {
     'Debian': {
       class {'apt': }
       apt::ppa { 'cloud-archive:liberty': }
+      
+      $groups = 'sudo'
     }
     'RedHat': {
       package {'centos-release-openstack-liberty':
         ensure    => present,
       }
+      
+      $groups = 'wheel'
     }
   }
   
@@ -23,7 +27,7 @@ class profile::base {
   user {'cgascoig':
     ensure   => present,
     shell    => '/bin/bash',
-    groups   => 'sudo',
+    groups   => $groups
     gid      => 'cgascoig',
     password => '***REMOVED***'
   }
