@@ -50,8 +50,10 @@ class profile::base {
     type   => 'ssh-rsa'
   }
   
-  package { 'lldpd': 
-    ensure    => present,
+  if $::osfamily == 'Debian' {
+    package { 'lldpd': 
+      ensure    => present,
+    }
   }
   
 }
