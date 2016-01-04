@@ -3,6 +3,9 @@ class profile::base (
   String $os_password, #Not plain text!
   String $ssh_key, #RSA public key
 ) {
+  # This is a hack - it doesn't seem to be possible to get a literal '$' through PE's class parameter GUI:
+  $realpw = regsubst($os_password, 'DOLLAR', '$', 'G')
+  
   class { 'ntp':
     servers    => ["ntp.esl.cisco.com"],
   }
@@ -37,7 +40,7 @@ class profile::base (
     shell    => '/bin/bash',
     groups   => $groups,
     gid      => $os_username,
-    password => $os_password,
+    password => $realpw,
   }
   
   file {"/home/$os_username" :
