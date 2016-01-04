@@ -15,6 +15,10 @@ class profile::base {
         ensure    => present,
       }
       
+      class { 'selinux':
+        mode    => 'permissive',
+      }
+      
       $groups = 'wheel'
     }
   }
