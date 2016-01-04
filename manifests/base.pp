@@ -27,7 +27,7 @@ class profile::base {
   user {'cgascoig':
     ensure   => present,
     shell    => '/bin/bash',
-    groups   => $groups
+    groups   => $groups,
     gid      => 'cgascoig',
     password => '***REMOVED***'
   }
