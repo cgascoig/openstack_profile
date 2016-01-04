@@ -4,7 +4,7 @@ class profile::rabbitmq (
 ) {
   case $::osfamily {
     'RedHat': {
-      include 'erlang'
+      # include 'erlang'
       class { 'erlang': epel_enable => true}
     }
   }
