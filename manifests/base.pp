@@ -2,6 +2,8 @@ class profile::base (
   String $os_username,
   String $os_password, #Not plain text!
   String $ssh_key, #RSA public key
+  String $gbp_repo_url,
+  String $opflex_repo_url,
 ) {
   # This is a hack - it doesn't seem to be possible to get a literal '$' through PE's class parameter GUI:
   $realpw = regsubst($os_password, 'DOLLAR', '$', 'G')
@@ -27,6 +29,19 @@ class profile::base (
       }
       
       $groups = 'wheel'
+      
+      # Add yum repos for GBP and OpFlex packages
+      yumrepo {'cisco-gbp':
+        ensure    => present,
+        baseurl   => $gbp_repo_url,
+        enabled   => true,
+      }
+      
+      yumrepo {'cisco-opflex':
+        ensure    => present,
+        baseurl   => $opflex_repo_url,
+        enabled   => true,
+      }
     }
   }
   
